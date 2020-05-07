@@ -14,6 +14,7 @@ public class GymSuit {
         GymSuitSolution solution = new GymSuitSolution();
         int answer = solution.solution(n, lost, reserve);
 
+        ////
         System.out.println(answer);
     }
 }
