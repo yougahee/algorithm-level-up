@@ -9,15 +9,12 @@ public class SkillTree {
         String skill = "CBD";
         String[] skill_trees = {"BACDE", "CBADF", "AECB", "BDA"};
 
-        SkillTreeSolution topSolution = new SkillTreeSolution();
 
-        System.out.println(topSolution.solution(skill, skill_trees));
+        System.out.println(solution(skill, skill_trees));
     }
-}
 
 
-class SkillTreeSolution {
-    public int solution(String skill, String[] skill_trees) {
+    public static int solution(String skill, String[] skill_trees) {
         int answer = 0;
 
         for(int i=0; i<skill_trees.length; i++){
@@ -44,3 +41,4 @@ class SkillTreeSolution {
         return answer;
     }
 }
+

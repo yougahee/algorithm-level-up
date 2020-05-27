@@ -6,16 +6,13 @@ public class Top {
     public static void main(String[] args) {
         int[] heights = {6,9,5,7,4};
 
-        TopSolution topSolution = new TopSolution();
 
-        int[] arr = topSolution.solution(heights);
+        int[] arr = solution(heights);
         System.out.println(Arrays.toString(arr));
     }
-}
 
 
-class TopSolution {
-    public int[] solution(int[] heights) {
+    public static int[] solution(int[] heights) {
         int[] answer = new int[heights.length];
 
         for(int i = heights.length-1; i >=0; i--) {

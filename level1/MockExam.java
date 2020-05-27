@@ -5,16 +5,13 @@ import java.util.ArrayList;
 public class MockExam {
 
     public static void main(String[] args) {
-        MockExamSolution solution = new MockExamSolution();
 
         int[] numbers = {1,2,3,4,5};
-        System.out.println(solution.solution(numbers));
+        System.out.println(solution(numbers));
     }
 
-}
 
-class MockExamSolution {
-    public int[] solution(int[] answers) {
+    public static int[] solution(int[] answers) {
         int[] result;
 
         int[] a = {1, 2, 3, 4, 5};
@@ -56,5 +53,3 @@ class MockExamSolution {
     }
 
 }
-
-

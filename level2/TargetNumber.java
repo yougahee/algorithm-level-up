@@ -9,21 +9,19 @@ public class TargetNumber {
         int[] numbers = {1, 1, 1, 1, 1};
         int target = 3;
 
-        TargetNumberSolution targetNumberSolution = new TargetNumberSolution();
 
-        int arr = targetNumberSolution.solution(numbers, target);
+        int arr = solution(numbers, target);
         System.out.println(arr);
 
     }
-}
 
-class TargetNumberSolution{
+
     static int[] output;
     static int cnt=0;
     static int targetnum;
     static int[] numbers1;
 
-    public int solution(int[] numbers, int target) {
+    public static int solution(int[] numbers, int target) {
 
         int size = numbers.length;
         int[] arr = {1,2};
@@ -72,4 +70,5 @@ class TargetNumberSolution{
             cnt++;
         }
     }
+
 }

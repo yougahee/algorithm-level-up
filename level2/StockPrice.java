@@ -7,15 +7,11 @@ public class StockPrice {
 
         int[] price = {1, 2, 3, 2, 3};
 
-        StockPriceSolution stockPriceSolution = new StockPriceSolution();
-
-        int[] arr = stockPriceSolution.solution(price);
+        int[] arr = solution(price);
         System.out.println(Arrays.toString(arr));
     }
-}
 
-class StockPriceSolution {
-    public int[] solution(int[] prices) {
+    public static int[] solution(int[] prices) {
         int[] answer = new int[prices.length];
 
         for (int i = 0; i < prices.length; i++) {

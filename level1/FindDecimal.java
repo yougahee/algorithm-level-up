@@ -2,16 +2,13 @@ package level1;
 
 public class FindDecimal {
     public static void main(String[] args) {
-        Solution solution = new Solution();
 
         int n = 5;
-        System.out.println(solution.solution(n));
+        System.out.println(solution(n));
     }
-}
 
-//에라토스테네스의 체
-class Solution {
-    public int solution(int n) {
+    //에라토스테네스의 체
+    public static int solution(int n) {
         int answer=0;
         int[] arr = new int[n+1];
 
@@ -36,4 +33,7 @@ class Solution {
         return answer;
     }
 
+
 }
+
+

@@ -7,16 +7,10 @@ public class BiggestNumber {
     public static void main(String[] args) {
         int[] heights = {6, 10, 2};
 
-        BiggestNumberSolution topSolution = new BiggestNumberSolution();
-
-        System.out.println(topSolution.solution(heights));
+        System.out.println(solution(heights));
     }
-}
 
-
-
-class BiggestNumberSolution {
-    public String solution(int[] numbers) {
+    public static String solution(int[] numbers) {
         StringBuilder answer  = new StringBuilder();
 
         String[] num = new String[numbers.length];
@@ -44,3 +38,4 @@ class BiggestNumberSolution {
         return answer.toString();
     }
 }
+

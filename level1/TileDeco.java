@@ -4,16 +4,13 @@ import java.util.Arrays;
 
 public class TileDeco {
     public static void main(String[] args) {
-        TileDecoSolution solution = new TileDecoSolution();
 
         int budget =6;
-        System.out.println(solution.solution(budget));
+        System.out.println(solution(budget));
     }
-}
 
 
-class TileDecoSolution {
-    public long solution(int N) {
+    public static long solution(int N) {
 
         //피보나치 수열
         long[] fibonacci = new long[N];
@@ -34,6 +31,4 @@ class TileDecoSolution {
 
         return DP[N-1];
     }
-
 }
-
