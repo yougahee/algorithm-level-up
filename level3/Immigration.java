@@ -1,6 +1,5 @@
 package level3;
 
-import java.util.Arrays;
 
 public class Immigration {
     public static void main(String[] args) {

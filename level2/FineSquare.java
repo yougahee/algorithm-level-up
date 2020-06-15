@@ -6,23 +6,25 @@ public class FineSquare {
         System.out.println(solution(8,12));
     }
 
-
     public static long solution(int w, int h) {
-        long answer = w*h;
+        long answer = (long) w * h;
+        long max = (long) w;
+        long min = (long) h;
+        long value =1;
 
-        //정사각형
-        if(w == h)
-            return answer - w;
-
-
-
-        if(w-h > 0) {
-            int a =w/h;
-            answer -= (a+1) * h;
-        }else{
-            int a =h/w;
-            answer -= (a+1) * w;
+        if(w < h) {
+            max = h;
+            min = w;
         }
+
+        //최대공약수 찾기
+        while (value > 0) {
+            value = max%min;
+            max = min;
+            min = value;
+        }
+
+        answer -= (h/max + w/max -1) * max;
 
         return answer;
     }
