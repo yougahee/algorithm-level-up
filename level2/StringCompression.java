@@ -1,5 +1,7 @@
 package level2;
 
+import java.util.ArrayList;
+
 public class StringCompression {
     public static void main(String[] args) {
 
@@ -25,9 +27,6 @@ public class StringCompression {
         return min;
     }
 
-    //replace를 쓰면 안될 것 같다.
-    //replace의 경우, 예외가 발생한다.
-    //size만큼 잘라내서 비교해보는 과정을 중요하게 보는 것 같다
     public static int Compression(String str, int size) {
         System.out.println("===============================");
         System.out.println("size 가? : " + size);
@@ -36,42 +35,41 @@ public class StringCompression {
         String substring = str.substring(0, size);
         String next, addStr;
 
+        ArrayList<String> array = new ArrayList<>();
+
         int cnt = 1;
         int i;
 
-        for (i = size; i < str.length(); i = i + size) {
-            if(i+size > str.length())
-                break;
+        int exist = str.length() % size;
 
-            next = str.substring(i, i + size);
+        for(i=0; i<= str.length() - size; i += size) {
+            array.add(str.substring(i, i+size));
+        }
 
-            if(substring.equals(next)) {
+        for(i=0; i<array.size()-1; i++) {
+            if(array.get(i).equals(array.get(i+1))) {
                 cnt++;
-
-                //마지막일경우
-                if(i+size == str.length()) {
-                    temp += Integer.toString(cnt);
-                    temp += substring;
-                    //System.out.println("여기 들어가?" );
-                    //System.out.println(temp);
-                }
-            }else {
+            }
+            else{
                 if(cnt != 1) {
-                    temp += Integer.toString(cnt);
-                    cnt =1;
+                    temp += cnt;
                 }
-                temp += substring;
-                substring = next;
+                temp += array.get(i);
+                cnt =1;
             }
         }
 
-        System.out.println(i);
-        System.out.println(temp +"  " +  temp.length());
+        if(cnt != 1) {
+            temp += cnt;
+        }
+        temp += array.get(array.size()-1);
 
-        return temp.length();
+        System.out.println(i);
+        System.out.println(temp +"  " +  temp.length() + "  exist : " + exist);
+
+        return temp.length() + exist;
     }
 }
-
 
 /*
 
@@ -88,8 +86,6 @@ class Solution {
     }
 
     public static int Compression(String str, int size) {
-        //System.out.println("===============================");
-        //System.out.println("size 가? : " + size);
 
         String temp = str;
         String substring = str.substring(0, size);
