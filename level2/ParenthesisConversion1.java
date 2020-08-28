@@ -16,36 +16,11 @@ public class ParenthesisConversion1 {
 
     static public String solution(String p) {
         answer = "";
-        String u = "";
 
-        int leftS =0, rightS = 0;
+        if (p.length() == 0)
+            return answer;
 
-        for(int i=0; i<p.length(); i++) {
-
-            if(p.charAt(i) == '(' )
-                leftS++;
-            else
-                rightS++;
-
-            u += p.charAt(i);
-
-            if(leftS == rightS) {
-                if(alright(u)) {
-                    answer = answer.concat(u);
-                }else {
-                    //1. 첫번째 문자열에 ( 를 추가,
-                    //2. 앞에서 한 left , right 쪼갤 수 있을 때까지 쪼개야한다.
-
-                    rightconversion(u);
-                }
-
-                u = "";
-                leftS = 0;
-                rightS = 0;
-            }
-        }
-
-
+        rightconversion(p);
 
         return answer;
     }
@@ -54,7 +29,7 @@ public class ParenthesisConversion1 {
     static public boolean alright(String str) {
         boolean ans = false;
 
-        if(str.charAt(0) == '(' && str.charAt(str.length()-1) == ')') {
+        if (str.charAt(0) == '(' && str.charAt(str.length() - 1) == ')') {
             ans = true;
         }
 
@@ -62,20 +37,54 @@ public class ParenthesisConversion1 {
     }
 
     static public void rightconversion(String str) {
+        int leftS = 0, rightS = 0;
+        String u = "";
+        String v = "";
 
-        if(str.length() == 2) {
-            answer += "()";
-            return;
-        }else {
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == '(')
+                leftS++;
+            else
+                rightS++;
 
+            u += str.charAt(i);
 
+            if (leftS == rightS) {
+                v = str.substring(i+1);
 
+                //System.out.println("u의 값 : " + u + " v의 값 : " + v);
 
-            answer += "(";
-            String test =  str.substring(1, str.length()-1);
-            System.out.println("test : " + test);
-            rightconversion(str.substring(1, str.length()-1));
-            answer += ")";
+                if (alright(u)) {
+                    answer = answer.concat(u);
+                } else {
+                    answer += "(";
+                    rightconversion(v);
+                    answer += ")";
+
+                    if(u.length() > 2)
+                        answer += Convert(u.substring(1, u.length()-1));
+                    return;
+                }
+
+                //System.out.println("answer의 값 : " + answer);
+
+                u = "";
+                leftS =0;
+                rightS =0;
+            }
         }
     }
+
+    static public String Convert(String str) {
+        String answer = "";
+
+        for(int i=0; i<str.length(); i++) {
+            if(str.charAt(i) == ')')
+                answer += '(';
+            else
+                answer += ')';
+        }
+        return answer;
+    }
+
 }
