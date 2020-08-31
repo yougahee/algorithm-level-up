@@ -1,6 +1,5 @@
 package level2;
 
-import javax.swing.*;
 import java.util.*;
 
 public class FormulaMaximization {
@@ -9,110 +8,110 @@ public class FormulaMaximization {
         String p = "100-200*300-500+20";
         String p1 = "50*6-3*2";
 
-        System.out.println(solution(p));
+        //System.out.println(solution(p));
         System.out.println(solution(p1));
     }
 
-    static long max;
-    static String[] opp, output;
-    static Queue<Integer> number;
-    static Queue<String> operator;
+    static ArrayList<Long> number = new ArrayList<>();
+    static ArrayList<Character> operator = new ArrayList<>();
 
-    static Queue<Integer> copy_number;
-    static Queue<String> copy_operator;
+    static long max = Integer.MIN_VALUE;
 
-    static public long solution(String expression) {
-        number = new LinkedList<>();
-        operator = new LinkedList<>();
-
+    public static long solution(String expression) {
+        long answer = 0;
         String temp = "";
-        Set<String> set = new HashSet<>();
 
-        for(int i=0; i<expression.length(); i++) {
-            switch (expression.charAt(i)) {
-                case '*':
-                    operator.add("*");
-                    set.add("*");
-                    number.add(Integer.parseInt(temp));
-                    temp = "";
-                    break;
-                case '+':
-                    operator.add("+");
-                    set.add("+");
-                    number.add(Integer.parseInt(temp));
-                    temp = "";
-                    break;
-                case '-':
-                    operator.add("-");
-                    set.add("-");
-                    number.add(Integer.parseInt(temp));
-                    temp = "";
-                    break;
-                default:
-                    temp += expression.charAt(i);
-                    break;
+        for (int i = 0; i < expression.length(); i++) {
+            char a = expression.charAt(i);
+
+            if (a == '*' || a == '+' || a == '-') {
+                operator.add(a);
+                //System.out.println(temp);
+                number.add(Long.parseLong(temp));
+                temp = "";
+            } else {
+                temp += a;
             }
         }
 
-        int opp_index = 0;
-        opp = new String[set.size()];
-        output = new String[set.size()];
 
-        for(String i : set) {
-            opp[opp_index++] = i;
-        }
+        //마지막으로 들어갈 숫자 넣어주기
+        number.add(Long.parseLong(temp));
 
-        boolean[] visited = new boolean[set.size()];
+        char[] arr = {'+', '*', '-'};
+        char[] output = new char[3];
+        boolean[] visited = new boolean[3];
 
-        permutation(opp, output, visited, 0, set.size(), set.size());
+        Permutation(arr, output, visited, 0, 3, 3);
+
+        number.clear();
+        operator.clear();
 
         return max;
     }
 
-    static public void permutation(String[] arr, String[] output, boolean[] visited, int depth, int n, int r) {
+    public static void Permutation(char arr[], char[] output, boolean[] visited, int depth, int n, int r) {
 
-        if(r == depth){
-
+        if (r == depth) {
+            System.out.println(Arrays.toString(output));
+            findMax(output);
             return;
         }
 
-        for(int i=0; i<n; i++) {
-            if(!visited[i]) {
+        for (int i = 0; i < n; i++) {
+            if (!visited[i]) {
                 visited[i] = true;
                 output[depth] = arr[i];
-                permutation(arr, output, visited, depth+1, n, r);
+                Permutation(arr, output, visited, depth + 1, n, r);
                 visited[i] = false;
-                output[depth] = "";
             }
         }
     }
 
-    static public void Calculator(String[] Priority) {
+    public static void findMax(char[] output) {
+        ArrayList<Long> copy_number = new ArrayList<>();
+        ArrayList<Character> copy_operator = new ArrayList<>();
 
-        copy_number = number;
-        copy_operator = operator;
+        copy_number.addAll(number);
+        copy_operator.addAll(operator);
 
         long result = 0;
-        int size = 0;
 
-        for(String oper : Priority) {
+        for (char aa : output) {
+            int num = 1;
+            for (int i = 0; i <copy_operator.size(); i+=num) {
+                if(aa == copy_operator.get(i)){
 
-            size = copy_operator.size();
+                    long n1 = copy_number.get(i);
+                    long n2 = copy_number.get(i+1);
 
-            for(int i=0; i<size; i++) {
-                if(oper.equals(copy_operator.peek())) {
+                    System.out.println(n1 +  " " +n2);
 
+                    if( aa == '+')
+                        result = n1 + n2;
+                    else if( aa == '*')
+                        result = n1 * n2;
+                    else if(aa == '-')
+                        result = n1 - n2;
 
+                    copy_number.add(i, result);
+
+                    copy_operator.remove(i);
+                    copy_number.remove(i+1);
+                    copy_number.remove(i+1);
+                    num = 0;
+
+                    System.out.println(copy_number);
                 }
                 else {
-                    copy_operator.add(copy_operator.poll());
-                    copy_number.add(copy_number.poll());
+                    num = 1;
                 }
-
             }
         }
 
-        //계산한 값
-        max = Math.max(max, result);
+        System.out.println("값 : " + copy_number.get(0));
+
+        max = Math.max(max, Math.abs(copy_number.get(0)));
     }
+
 }
