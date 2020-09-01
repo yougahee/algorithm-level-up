@@ -100,8 +100,6 @@ public class FormulaMaximization {
                     copy_number.remove(i+1);
                     copy_number.remove(i+1);
                     num = 0;
-
-                    System.out.println(copy_number);
                 }
                 else {
                     num = 1;
