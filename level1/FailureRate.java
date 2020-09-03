@@ -1,7 +1,5 @@
 package level1;
 
-import java.util.ArrayList;
-
 public class FailureRate {
     public static void main(String[] args) {
         int n = 5;
