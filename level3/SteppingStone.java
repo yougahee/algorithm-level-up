@@ -2,6 +2,7 @@ package level3;
 
 import java.util.*;
 
+//범위가 미친듯이 크면 DFS, BFS 말고 바이너리 서치, 등등 O(logN)인 것들을 생각해보자!
 public class SteppingStone {
     public static void main(String[] args) {
 
@@ -10,7 +11,6 @@ public class SteppingStone {
 
         System.out.println(solution(stones, k));
     }
-
 
     public static int solution(int[] stones, int k) {
         int answer = 0;
@@ -33,8 +33,6 @@ public class SteppingStone {
             }else {
                 right = middle - 1;
             }
-
-            System.out.println("======================================================");
         }
 
         return answer;
