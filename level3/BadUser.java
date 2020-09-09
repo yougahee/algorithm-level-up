@@ -2,7 +2,7 @@ package level3;
 
 import java.util.HashSet;
 
-public class FindRoad {
+public class BadUser {
     public static void main(String[] args) {
         String[] user_id = {"frodo", "fradi", "crodo", "abc123", "frodoc"};
         String[] banned_id = {"fr*d*", "abc1**"};
@@ -55,7 +55,6 @@ public class FindRoad {
     }
 
     public static boolean findBannerId(String user, String banner) {
-
 
         if (user.length() == banner.length()) {
             for (int i = 0; i < user.length(); i++) {

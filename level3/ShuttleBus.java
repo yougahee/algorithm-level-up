@@ -27,8 +27,6 @@ public class ShuttleBus {
         int startTime = 9 * 60;
         int busStartTime=0, lastPeopleWaitTime=0;
         boolean spareSeat = false;
-        //콘이 꼭 타야하는 버스 시간
-        int con = startTime + n * t;
 
         ArrayList<Integer> peopleWaitTime = new ArrayList<>();
 
@@ -54,13 +52,12 @@ public class ShuttleBus {
                 lastPeopleWaitTime = peopleWaitTime.get(0);
 
                 if (busStartTime >= lastPeopleWaitTime) {
-                    //System.out.println("이 사람은 탑니다. : " + printTime(lastPeopleWaitTime));
                     peopleWaitTime.remove(0);
                 }
             }
         }
 
-        //자리가 비어있음..
+        //자리가 비어있음
         if(spareSeat){
             answer = printTime(busStartTime);
         }else {
