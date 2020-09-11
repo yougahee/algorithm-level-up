@@ -1,8 +1,6 @@
 package codeChanllenge1;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashSet;
+import java.util.*;
 
 public class Test4 {
     public static void main(String[] args) {

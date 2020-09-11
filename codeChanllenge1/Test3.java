@@ -14,7 +14,6 @@ public class Test3 {
 
     //프로그래머스 열리면 한번 실행해보기
     public static int solution(int[] a) {
-        //양쪽 끝은 어쨌건 무조건 값을 가질 수 있다.
         int cnt =2;
 
         //right판단하기
