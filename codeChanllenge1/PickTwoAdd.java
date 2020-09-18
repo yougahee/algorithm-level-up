@@ -3,7 +3,7 @@ package codeChanllenge1;
 import java.util.Arrays;
 import java.util.HashSet;
 
-public class Test1 {
+public class PickTwoAdd {
     public static void main(String[] args) {
         int[] numbers = {2,1,3,4,1};
 

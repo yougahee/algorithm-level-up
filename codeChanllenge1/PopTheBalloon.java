@@ -1,6 +1,6 @@
 package codeChanllenge1;
 
-public class Test3 {
+public class PopTheBalloon {
     public static void main(String[] args) {
         int[] a = {9,-1,-5};
         //System.out.println(solution(a));

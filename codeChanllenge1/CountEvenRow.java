@@ -2,7 +2,7 @@ package codeChanllenge1;
 
 import java.util.*;
 
-public class Test4 {
+public class CountEvenRow {
     public static void main(String[] args) {
         int[][] numbers = {{0,1,0},{1,1,1},{1,1,0},{0,1,1}};
 
