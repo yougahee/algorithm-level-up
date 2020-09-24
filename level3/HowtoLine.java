@@ -1,64 +1,53 @@
 package level3;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 public class HowtoLine {
     public static void main(String[] args) {
-
         int n = 3;
-        int k = 5;
+        long k = 5;
 
-        System.out.println(Arrays.toString(solution(n,k)));
-
+        System.out.println(Arrays.toString(solution(n, k)));
     }
 
-    static int[] answer;
-    static int[] isChecked;
-    static int[] realanswer;
-    static int cnt=0;
+    static ArrayList<Long> arrayList;
+    static long[] answer;
+    static int size;
 
     public static int[] solution(int n, long k) {
+        answer = new long[n];
+        arrayList = new ArrayList<>();
+        size = n;
+        long fact =1;
 
-        int[] arr = new int[n];
-        answer = new int[n];
-        isChecked = new int[n];
-        realanswer = new int[n];
-
-        for(int i=0; i<n; i++) {
-            arr[i] = i+1;
+        for(long i=1; i<=n; i++) {
+            arrayList.add(i);
+            fact *= i;
         }
 
-        permutation(n, k, arr,0, true);
+        DFS(n, k, fact);
 
-        return realanswer;
-
+        int index =0;
+        int[] intAnswer = new int[n];
+        for(long x : answer)
+            intAnswer[index++] = (int) x;
+        return intAnswer;
     }
 
-    public static void permutation(int n, long k, int[] arr, int depth, boolean istrue) {
-
-        //하나의 배열을 완성시키면
-        if(depth == n) {
-            cnt++;
-            if( k == cnt) {
-                System.arraycopy(answer, 0, realanswer, 0 , answer.length);
-                istrue = false;
-                return;
-            }
-
-            return;
+    public static void DFS(int n, long k, long factorial) {
+        if( n == 1 ) {
+            answer[size-n] = arrayList.get(0);
         }
+        else {
+            long div = factorial/n;
+            int index = (int) ((k-1)/div);
+            answer[size - n] = arrayList.get( index );
+            arrayList.remove(index);
 
-
-        for(int i=0; i<n; i++) {
-
-            if(isChecked[i] == 0) {
-
-                answer[depth] = arr[i];
-                isChecked[i] = 1;
-                isChecked[i] = 0;
-            }
-
+            long x = k%div;
+            if(x == 0) x = div;
+            DFS(n-1, x, factorial/n);
         }
-
     }
 }
