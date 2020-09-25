@@ -3,6 +3,9 @@ package level3;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+// 내 풀이를 사용을 하긴 했지만, long을 사용하는 것이나
+//factorial을 재귀호출을 하지 않고 현재 n을 나누어서 사용하는 방법은 참고했음
+// 효율성 문제를 많이 풀어봐야 할 것!
 public class HowtoLine {
     public static void main(String[] args) {
         int n = 3;
