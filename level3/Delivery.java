@@ -1,8 +1,7 @@
 package level3;
 
-
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 public class Delivery {
     public static void main(String[] args) {
@@ -52,26 +51,47 @@ public class Delivery {
                 answer++;
         }
 
+
         return answer-1;
     }
 
     public static void Dijkstra(int N, int[][] roadMap) {
-        visited[1] = true;
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(1);
+        PriorityQueue<Pair> pq = new PriorityQueue<>(new Comparator<Pair>() {
+            @Override
+            public int compare(Pair o1, Pair o2) {
+                int dis =  o1.distance - o2.distance;
+                if(dis == 0)
+                    return o1.index - o2.index;
+                return dis;
+            }
+        });
+        pq.add(new Pair(1,0));
 
-        while (!queue.isEmpty()) {
-            int node = queue.poll();
-            visited[node] = true;
+        while (!pq.isEmpty()) {
+            Pair node = pq.poll();
 
-            for(int i= 1; i<=N; i++) {
-                if(roadMap[node][i] != 0 && !visited[i]) {
-                    dist[i] = Math.min(dist[i], dist[node]+roadMap[node][i]);
-                    System.out.println("i의 값 : " + i + " dist의 값 :  " + dist[i]);
+            int index = node.index;
+            int value = node.distance;
 
-                    queue.add(i);
+            if(!visited[index]) {
+                for(int i= 1; i<=N; i++) {
+                    if(roadMap[index][i] != 0) {
+                        dist[i] = Math.min(dist[i], value+roadMap[index][i]);
+                        //System.out.println("i의 값 : " + i + " dist의 값 :  " + dist[i]);
+                        pq.add(new Pair(i, dist[i]));
+                    }
                 }
             }
+            visited[index] = true;
+        }
+    }
+
+    static class Pair {
+        int index, distance;
+
+        public Pair(int index, int distance) {
+            this.index = index;
+            this.distance = distance;
         }
     }
 }
