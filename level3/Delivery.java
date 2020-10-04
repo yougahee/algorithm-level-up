@@ -1,6 +1,7 @@
 package level3;
 
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.PriorityQueue;
 
 public class Delivery {
@@ -18,6 +19,8 @@ public class Delivery {
     public static int solution(int N, int[][] road, int K) {
         int answer = 0;
         int MaXVALUE = 1000000;
+
+        HashSet<Integer> hashSet = new HashSet<>();
 
         visited = new boolean[N+1];
         int[][] roadMap = new int[N+1][N+1];
@@ -52,7 +55,16 @@ public class Delivery {
         }
 
 
+        String str = "ghghghghgh";
+        put(str, "에베베");
+        System.out.println(str);
+
+
         return answer-1;
+    }
+
+    public static void put (String before, String after) {
+        before = after;
     }
 
     public static void Dijkstra(int N, int[][] roadMap) {
