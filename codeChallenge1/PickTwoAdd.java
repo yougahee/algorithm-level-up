@@ -1,4 +1,4 @@
-package codeChanllenge1;
+package codeChallenge1;
 
 import java.util.Arrays;
 import java.util.HashSet;

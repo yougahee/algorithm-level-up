@@ -1,4 +1,4 @@
-package codeChanllenge1;
+package codeChallenge1;
 
 public class PopTheBalloon {
     public static void main(String[] args) {

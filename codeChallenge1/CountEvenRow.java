@@ -1,6 +1,4 @@
-package codeChanllenge1;
-
-import java.util.*;
+package codeChallenge1;
 
 public class CountEvenRow {
     public static void main(String[] args) {
