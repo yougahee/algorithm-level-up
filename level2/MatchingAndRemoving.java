@@ -8,6 +8,8 @@ public class MatchingAndRemoving {
         System.out.println(solution("cdcd"));
     }
 
+    //stack을 생각하지 못했던 문제..
+    //알고보면 너무 간단한 건데 stack을 활용하는 것을 파악하지 못했다
     public static int solution(String s)
     {
         Stack<Character> stack = new Stack<>();
