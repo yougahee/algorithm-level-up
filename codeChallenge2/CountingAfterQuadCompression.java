@@ -2,7 +2,7 @@ package codeChallenge2;
 
 import java.util.Arrays;
 
-public class Test2 {
+public class CountingAfterQuadCompression {
     public static void main(String[] args) {
         int[][] arr = {{1,1,0,0},{1,0,0,0},{1,0,0,1},{1,1,1,1}};
 
