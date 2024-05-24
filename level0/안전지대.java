@@ -1,3 +1,8 @@
+/**
+    링크 url 
+    - https://school.programmers.co.kr/learn/courses/30/lessons/120866
+**/
+
 class Solution {
     
     public int solution(int[][] board) {
