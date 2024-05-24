@@ -1,6 +1,6 @@
 # Algorithm-Programmer
 
-:point_right: Programmers Algorithm Repo
+:point_right: Programmers Algorithm Repo    
 :point_right: Purpose : improve algorithm skill  :fire:   
 :point_right: Goal : I try to solve at least 1 algorithm a week   
 :point_right: date : 2024.05 ~ ing
